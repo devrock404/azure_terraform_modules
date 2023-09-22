@@ -1,0 +1,28 @@
+# This is a basic workflow to help you get started with Actions
+name: Terraform Scan
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  checkov-terraform-scan:
+    runs-on: ubuntu-latest
+    name: Checkov Terraform Scan
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+      with:
+        repository: devrock404/terraform_checkov_scan
+        ref: main
+        token: '${{ secrets.PAT_TOKEN }}'
+        path: .github/actions/
+    - name: Checkov Terraform Scan
+      id: checkov-terraform-workspace
+      uses: ./.github/actions/checkov-terraform-scan
+      with: 
+        terraform-folder-path: ./
