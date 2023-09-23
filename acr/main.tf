@@ -7,5 +7,6 @@ module "acr" {
 
   allowed_subnets = []
   geo_replication = var.geo_replication
+  public_network_access_enabled =false
   tags = var.tags
 }
