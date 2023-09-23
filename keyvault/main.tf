@@ -13,4 +13,7 @@ module "key_vault" {
   location                     = var.location
   subnet_ids                   = var.subnet_ids
   access_policies              = var.access_policies
+  purge_protection_enabled = true
+  public_network_access_enabled =false
+
 }
