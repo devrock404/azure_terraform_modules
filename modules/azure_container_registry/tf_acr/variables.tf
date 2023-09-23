@@ -25,7 +25,7 @@ variable "admin_enabled" {
   default     = false
 }
 
-variable "georeplication_locations" {
+variable "geo_replication" {
   description = <<DESC
   A list of Azure locations where the Ccontainer Registry should be geo-replicated. Only activated on Premium SKU.
   Supported properties are:

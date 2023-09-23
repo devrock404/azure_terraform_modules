@@ -6,6 +6,6 @@ module "acr" {
   sku                 = "Premium"
 
   allowed_subnets = []
-
+  geo_replication = var.geo_replication
   tags = var.tags
 }

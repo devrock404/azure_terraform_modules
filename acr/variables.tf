@@ -13,6 +13,15 @@ variable "acr_name" {
   type        = string
 }
 
+variable "geo_replication" {
+  type    = list(object({
+    location = string
+    zone_redundancy_enabled = bool
+    regional_endpoint_enabled = bool
+    tags                    = map(string)
+  }))
+  default = []
+}
 
 variable "tags" {
   description = "Resource tags"

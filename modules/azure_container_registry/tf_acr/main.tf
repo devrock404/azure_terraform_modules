@@ -8,9 +8,10 @@ resource "azurerm_container_registry" "registry" {
 
   public_network_access_enabled = var.public_network_access_enabled
   network_rule_bypass_option    = var.azure_services_bypass_allowed ? "AzureServices" : "None"
-
+  
+  anonymous_pull_enabled = false
   data_endpoint_enabled = var.data_endpoint_enabled
-
+    
   dynamic "retention_policy" {
     for_each = var.images_retention_enabled && var.sku == "Premium" ? ["enabled"] : []
 
@@ -29,7 +30,7 @@ resource "azurerm_container_registry" "registry" {
   }
 
   dynamic "georeplications" {
-    for_each = var.georeplication_locations != null && var.sku == "Premium" ? var.georeplication_locations : []
+    for_each = var.geo_replication != null && var.sku == "Premium" ? var.geo_replication : []
 
     content {
       location                  = try(georeplications.value.location, georeplications.value)
