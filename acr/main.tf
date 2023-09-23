@@ -1,0 +1,11 @@
+module "acr" {
+  source              = "./../modules/azure_container_registry/tf_acr"
+  acr_name            = var.acr_name
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  sku                 = "Premium"
+
+  allowed_subnets = []
+
+  tags = var.tags
+}
