@@ -11,7 +11,7 @@ resource "azurerm_key_vault" "kv" {
   enabled_for_template_deployment = var.enabledForTemplateDeployment
   enabled_for_disk_encryption = var.enabledForDiskEncryption
   enable_rbac_authorization  = var.enableRbacAuthorization
-
+  purge_protection_enabled    = true
   dynamic "access_policy" {
     for_each = var.access_policies
     content {
